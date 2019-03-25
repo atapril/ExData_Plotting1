@@ -20,7 +20,7 @@ Datetime <- data.table(Datetime)
 Datetime <- setnames(Datetime, "DateTime")
 PowerConsumption <- PowerConsumption[ , !names(PowerConsumption) %in% c("Date","Time")]
 PowerConsumption <- cbind(Datetime, PowerConsumption)
-PowerConsumption$Global_active_power <- PowerConsumption$Global_active_power
+PowerConsumption$Global_active_power <- as.numeric(PowerConsumption$Global_active_power)
 PowerConsumption$DateTime <- as.POSIXct(PowerConsumption$DateTime)
 hist(PowerConsumption$Global_active_power, main = "Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
 dev.copy(png,"plot1.png", width=480, height=480)
